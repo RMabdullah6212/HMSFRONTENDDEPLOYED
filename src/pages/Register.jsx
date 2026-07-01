@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axiosConfig";
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../main";
@@ -24,11 +24,7 @@ const Register = () => {
       await axios
         .post(
           "/user/patient/register",
-          { firstName, lastName, email, phone, nic, dob, gender, password },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
+          { firstName, lastName, email, phone, nic, dob, gender, password }
         )
         .then((res) => {
           toast.success(res.data.message);

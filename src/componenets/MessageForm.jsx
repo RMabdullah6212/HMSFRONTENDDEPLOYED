@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axiosConfig";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -13,14 +13,7 @@ const MessageForm = () => {
     e.preventDefault();
     try {
       await axios
-        .post(
-          "/message/send",
-          { firstName, lastName, email, phone, message },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
-        )
+        .post("/message/send", { firstName, lastName, email, phone, message })
         .then((res) => {
           toast.success(res.data.message);
           setFirstName("");

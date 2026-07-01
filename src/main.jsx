@@ -1,9 +1,6 @@
 import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import axios from "axios";
-
-axios.defaults.baseURL = `${import.meta.env.VITE_API_URL}/api/v1`;
 
 export const Context = createContext({
   isAuthenticated: false,

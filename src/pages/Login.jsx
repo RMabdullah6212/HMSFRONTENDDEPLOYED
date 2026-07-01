@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axiosConfig";
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../main";
@@ -19,11 +19,7 @@ const Login = () => {
       await axios
         .post(
           "/user/login",
-          { email, password, confirmPassword, role: "Patient" },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
+          { email, password, confirmPassword, role: "Patient" }
         )
         .then((res) => {
           toast.success(res.data.message);

@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from './componenets/Navbar.jsx'
 import { useContext, useEffect } from 'react'
 import { Context } from './main.jsx'
-import axios from 'axios'
+import axios from './api/axiosConfig'
 import Footer from './componenets/Footer.jsx'
 
 
@@ -22,12 +22,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          "/user/patient/me",
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get("/user/patient/me");
         setIsAuthenticated(true);
         setUser(response.data.user);
       } catch (error) {
